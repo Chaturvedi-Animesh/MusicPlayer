@@ -1,0 +1,65 @@
+<html>
+<head>
+<title>MainActivity.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6897bb;}
+.ls0 { height: 1px; border-width: 0; color: #4d4d4d; background-color:#4d4d4d}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+MainActivity.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.chaturvediji.musicplayer</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">androidx.appcompat.app.AppCompatActivity</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">android.media.MediaPlayer</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.os.Bundle</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.view.View</span><span class="s0">;</span>
+
+<span class="s0">public class </span><span class="s1">MainActivity </span><span class="s0">extends </span><span class="s1">AppCompatActivity {</span>
+    <span class="s1">MediaPlayer mediaPlayer</span><span class="s0">;</span>
+
+<hr class="ls0">    <span class="s1">@Override</span>
+    <span class="s0">protected void </span><span class="s1">onCreate(Bundle savedInstanceState) {</span>
+        <span class="s0">super</span><span class="s1">.onCreate(savedInstanceState)</span><span class="s0">;</span>
+        <span class="s1">setContentView(R.layout.activity_main)</span><span class="s0">;</span>
+        <span class="s1">Playerinit()</span><span class="s0">;</span>
+
+    <span class="s1">}</span>
+<hr class="ls0">    <span class="s0">public void </span><span class="s1">Playerinit(){</span>
+        <span class="s1">mediaPlayer=MediaPlayer.create(</span><span class="s0">this,</span><span class="s1">R.raw.song)</span><span class="s0">;</span>
+    <span class="s1">}</span>
+<hr class="ls0">    <span class="s0">public void </span><span class="s1">play(View v){</span>
+        <span class="s1">mediaPlayer.start()</span><span class="s0">;</span>
+    <span class="s1">}</span>
+<hr class="ls0">    <span class="s0">public void </span><span class="s1">pause(View v){</span>
+        <span class="s1">mediaPlayer.pause()</span><span class="s0">;</span>
+    <span class="s1">}</span>
+<hr class="ls0">    <span class="s0">public void </span><span class="s1">stop(View v){</span>
+        <span class="s1">mediaPlayer.stop()</span><span class="s0">;</span>
+        <span class="s1">Playerinit()</span><span class="s0">;</span>
+    <span class="s1">}</span>
+<hr class="ls0">    <span class="s0">public void </span><span class="s1">forward(View v){</span>
+        <span class="s0">int </span><span class="s1">current=mediaPlayer.getCurrentPosition()</span><span class="s0">;</span>
+        <span class="s0">int </span><span class="s1">dur=mediaPlayer.getDuration()</span><span class="s0">;</span>
+        <span class="s0">if</span><span class="s1">(current+</span><span class="s2">5000</span><span class="s1">&lt;dur){</span>
+            <span class="s1">mediaPlayer.seekTo(current+</span><span class="s2">5000</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+<hr class="ls0">    <span class="s0">public void </span><span class="s1">rewind(View v){</span>
+        <span class="s0">int </span><span class="s1">current=mediaPlayer.getCurrentPosition()</span><span class="s0">;</span>
+        <span class="s0">if</span><span class="s1">(current-</span><span class="s2">5000</span><span class="s1">&gt;</span><span class="s2">0</span><span class="s1">){</span>
+            <span class="s1">mediaPlayer.seekTo(current-</span><span class="s2">5000</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+<span class="s1">}</span>
+</pre>
+</body>
+</html>
